@@ -18,14 +18,14 @@ app.get("/",(req,res) => {
 app.get("/download",(req,res) => {
   var url = req.query.url;
   res.header("Content-Disposition", 'attachment; filename="Video.mp4');
-  ytdl(url, {itag:137}).pipe(res);
-  // ytdl.getInfo(url,(err,info) => {
-  //   if(err){
-  //     console.log(err);
-  //   }else{
-  //     res.send(info);
-  //   }
-  // })
+  ytdl(url, {itag:137,quality:"highestvideos"}).pipe(res);
+  ytdl.getInfo(url,(err,info) => {
+    if(err){
+      console.log(err);
+    }else{
+      res.send(info);
+    }
+  })
 });
 
 ///////////////////////////////////////////  POST Routes /////////////////////////////
